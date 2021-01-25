@@ -22,3 +22,17 @@ const greet = function (greeting) {
 
 const x = greet("hey");
 x("samanth");
+
+// rewrite in arrow functions
+const greetTwo = (greeting) => {
+  return (name) => {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+// or
+
+const greetThree = (greeting) => (name) => console.log(`${greeting} ${name}`);
+
+greetTwo("Hey")("samanth");
+greetThree("Hey")("samanth");
