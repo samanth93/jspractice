@@ -83,3 +83,16 @@ bookAirIndia(203, "ss");
 bookBritishAirways(204, "sxsx");
 console.log(indianAirlines);
 console.log(britishAirways);
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  this.planes++;
+  console.log(this);
+};
+// if we click this we will get this as a button tag with class buy
+// document.querySelector(".buy").addEventListener("click", lufthansa.buyPlane);
+// so we use bind for above problem 93 line
+document
+  .querySelector(".buy")
+  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+console.log(lufthansa);
