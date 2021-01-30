@@ -96,3 +96,21 @@ document
   .querySelector(".buy")
   .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
 console.log(lufthansa);
+const addTax = (rate, value) => {
+  return value + rate * value;
+};
+console.log(addTax(0.2, 100));
+const addVat = addTax.bind(null, 0.4);
+console.log(addVat(100));
+
+// const addVatTwo = function (value) {
+//   return addTax(0.4, value);
+// };
+// console.log(addVatTwo(100));
+
+const addVatTwo = function (value) {
+  return function (rate) {
+    return value + value * 0.4;
+  };
+};
+console.log(addVatTwo(100)(0.4));
