@@ -36,3 +36,50 @@ const greetThree = (greeting) => (name) => console.log(`${greeting} ${name}`);
 
 greetTwo("Hey")("samanth");
 greetThree("Hey")("samanth");
+
+const lufthansa = {
+  airline: "Lufthansa",
+  code: "LH",
+  bookings: [],
+  book: function (flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} code: ${this.code} number: ${flightNum}`
+    );
+    this.bookings.push({
+      bookingDetails: `${this.airline}, ${this.code}, ${name}`,
+    });
+  },
+};
+const indianAirlines = {
+  airline: "Indian Airlines",
+  code: "IA",
+  bookings: [],
+};
+
+lufthansa.book(201, "samanth");
+
+console.log(lufthansa);
+
+const book = lufthansa.book;
+
+// book(201, "said");
+
+book.call(indianAirlines, 202, "sid");
+console.log(indianAirlines);
+
+book.apply(indianAirlines, [203, "samsid"]);
+console.log(indianAirlines);
+
+// bind will not call the functions directly
+const britishAirways = {
+  airline: "British Airlines",
+  code: "BA",
+  bookings: [],
+};
+const bookAirIndia = book.bind(indianAirlines);
+const bookBritishAirways = book.bind(britishAirways);
+
+bookAirIndia(203, "ss");
+bookBritishAirways(204, "sxsx");
+console.log(indianAirlines);
+console.log(britishAirways);
